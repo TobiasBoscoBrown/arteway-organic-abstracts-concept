@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Organic Abstracts with Jamie Orr — Arteway</title>
+<title>Organic Abstracts with Jamie Orr · Arteway</title>
 <meta name="description" content="Master fluidity and texture inside Jamie Orr's Organic Abstract course. Over 4 hours of studio lessons, lifetime access and a worldwide community of painters." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -431,7 +431,7 @@
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12l4 4 10-10"/></svg></span> Unique process walkthrough</li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12l4 4 10-10"/></svg></span> Private community access</li>
         </ul>
-        <button class="btn" onclick="cart()">Add To Cart — $99</button>
+        <button class="btn" onclick="cart()">Add To Cart · $99</button>
         <p class="guar">100% satisfaction guaranteed · 14-day refund</p>
         <div class="bonus">
           <div class="bt">Free Bonuses · $70 value</div>
@@ -450,7 +450,7 @@
   <div class="wrap reveal">
     <h2>Step into the studio and learn their secrets</h2>
     <p>Gain lifetime access to Organic Abstracts and start creating work that's truly your own.</p>
-    <button class="btn" onclick="scrollTo2('#pricing')">Enroll Now — $99</button>
+    <button class="btn" onclick="scrollTo2('#pricing')">Enroll Now · $99</button>
   </div>
 </section>
 
@@ -537,34 +537,40 @@
     c.width=w*dpr; c.height=h*dpr; c.style.width='100%'; c.style.height='100%'; c.style.display='block';
     el.appendChild(c);
     var x=c.getContext('2d'); x.scale(dpr,dpr);
-    var g=x.createLinearGradient(0,0,w,h);
-    g.addColorStop(0,palette[0]); g.addColorStop(1,palette[1]);
-    x.fillStyle=g; x.fillRect(0,0,w,h);
     function rnd(a,b){return a+Math.random()*(b-a);}
-    for(var i=0;i<14;i++){
-      var col=palette[Math.floor(rnd(0,palette.length))];
-      var cx=rnd(0,w), cy=rnd(0,h), r=rnd(w*0.12,w*0.5);
+    function pick(){return palette[Math.floor(Math.random()*palette.length)];}
+    var light=palette[palette.length-2];
+    // base wash from two deeper palette tones
+    var g=x.createLinearGradient(rnd(0,w),0,rnd(0,w),h);
+    g.addColorStop(0,palette[0]); g.addColorStop(1,palette[4]||palette[1]);
+    x.fillStyle=g; x.fillRect(0,0,w,h);
+    // soft layered colour pours
+    for(var i=0;i<24;i++){
+      var col=pick();
+      var cx=rnd(-w*0.25,w*1.25), cy=rnd(-h*0.2,h*1.2), r=rnd(w*0.4,w*1.05);
       var rg=x.createRadialGradient(cx,cy,0,cx,cy,r);
-      rg.addColorStop(0,col); rg.addColorStop(1,'rgba(0,0,0,0)');
-      x.globalAlpha=rnd(0.18,0.5); x.fillStyle=rg;
-      x.beginPath();
-      var pts=10, a0=rnd(0,6.28);
-      for(var p=0;p<=pts;p++){var ang=a0+p/pts*6.28; var rr=r*rnd(0.6,1.05); var px=cx+Math.cos(ang)*rr, py=cy+Math.sin(ang)*rr; if(p===0)x.moveTo(px,py); else x.lineTo(px,py);}
-      x.closePath(); x.fill();
+      rg.addColorStop(0,col); rg.addColorStop(rnd(0.45,0.7),col); rg.addColorStop(1,'rgba(0,0,0,0)');
+      x.globalAlpha=rnd(0.10,0.30); x.fillStyle=rg; x.fillRect(0,0,w,h);
     }
-    x.globalAlpha=0.22;
-    for(var s=0;s<7;s++){
-      x.strokeStyle=palette[Math.floor(rnd(0,palette.length))];
-      x.lineWidth=rnd(2,16); x.lineCap='round';
+    // gentle flowing light veins (soft, no harsh strokes)
+    x.globalCompositeOperation='lighten';
+    for(var s=0;s<5;s++){
+      x.globalAlpha=rnd(0.05,0.13); x.fillStyle=light;
       x.beginPath();
-      x.moveTo(rnd(-20,w),rnd(0,h));
-      for(var k=0;k<4;k++){x.bezierCurveTo(rnd(0,w),rnd(0,h),rnd(0,w),rnd(0,h),rnd(0,w),rnd(0,h));}
-      x.stroke();
+      var y0=rnd(0,h);
+      x.moveTo(-12,y0);
+      for(var k=0;k<=6;k++){var xx=(k/6)*(w+24)-12; var yy=y0+Math.sin(k*1.3+s)*rnd(8,h*0.22)+rnd(-16,16); x.lineTo(xx,yy);}
+      x.lineTo(w+12,h+12); x.lineTo(-12,h+12); x.closePath(); x.fill();
     }
-    x.globalAlpha=1;
+    x.globalCompositeOperation='source-over'; x.globalAlpha=1;
+    // soft depth vignette
+    var vg=x.createRadialGradient(w/2,h*0.42,h*0.15,w/2,h*0.5,h*0.85);
+    vg.addColorStop(0,'rgba(0,0,0,0)'); vg.addColorStop(1,'rgba(18,18,18,0.20)');
+    x.fillStyle=vg; x.fillRect(0,0,w,h);
+    // fine paper grain
     try{
       var id=x.getImageData(0,0,w,h), d=id.data;
-      for(var n=0;n<d.length;n+=4){var v=(Math.random()-0.5)*18; d[n]+=v; d[n+1]+=v; d[n+2]+=v;}
+      for(var n=0;n<d.length;n+=4){var v=(Math.random()-0.5)*15; d[n]+=v; d[n+1]+=v; d[n+2]+=v;}
       x.putImageData(id,0,0);
     }catch(e){}
   }
@@ -574,14 +580,4 @@
   var blush=['#b97f6a','#e3b9a6','#f0e3d8','#7a5246','#cfd6cf'];
   function go(id,pal){var el=document.getElementById(id); if(el) paint(el,pal);}
   function build(){
-    go('art1',ocean); go('art2',earth); go('art3',sage);
-    go('g1',ocean); go('g2',blush); go('g3',earth); go('g4',sage);
-    go('portrait',ocean); go('ctaArt',ocean);
-  }
-  build();
-  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){
-    document.querySelectorAll('canvas').forEach(function(cv){cv.remove();}); build();
-  },350);});
-</script>
-</body>
-</html>
+    go('ar
