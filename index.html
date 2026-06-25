@@ -18,7 +18,6 @@
     --sand:#efe6da;
     --line:#e7ded3;
     --white:#ffffff;
-    --radius:14px;
     --maxw:1180px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -32,14 +31,12 @@
     overflow-x:hidden;
   }
   h1,h2,h3,h4{font-family:'EB Garamond',serif;font-weight:600;line-height:1.08;color:var(--ink);letter-spacing:-.01em}
-  .serif{font-family:'EB Garamond',serif}
   .teal{color:var(--teal)}
   p{color:var(--ink-soft);font-weight:400}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
   .eyebrow{font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:12px;color:var(--teal)}
 
-  /* Buttons */
   .btn{
     display:inline-flex;align-items:center;gap:10px;
     font-family:'Kanit',sans-serif;font-weight:500;font-size:16px;letter-spacing:.01em;
@@ -50,30 +47,18 @@
   .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(0,0,0,.55)}
   .btn.teal-btn{background:var(--teal)}
   .btn.teal-btn:hover{background:var(--teal-deep)}
-  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
-  .btn.ghost:hover{background:var(--ink);color:#fff}
 
-  /* Nav */
   header{position:absolute;top:0;left:0;right:0;z-index:40}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:26px 28px;max-width:var(--maxw);margin:0 auto}
   .logo{display:flex;align-items:center;gap:11px;font-family:'EB Garamond',serif;font-weight:600;font-size:21px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink)}
-  .logo .mono{
-    width:38px;height:38px;border:2px solid var(--ink);display:grid;place-items:center;
-    font-size:15px;letter-spacing:0;font-weight:600;border-radius:7px;
-  }
+  .logo .mono{width:38px;height:38px;border:2px solid var(--ink);display:grid;place-items:center;font-size:15px;letter-spacing:0;font-weight:600;border-radius:7px}
   .nav-links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
   .nav-links a{color:var(--ink);opacity:.78;transition:opacity .2s}
   .nav-links a:hover{opacity:1;color:var(--teal)}
-  .nav-cta{display:flex;align-items:center;gap:18px}
   .login{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:#000;color:#fff;padding:11px 22px;border-radius:9px}
   @media(max-width:880px){.nav-links{display:none}.login{display:none}}
 
-  /* Sticky enroll bar */
-  .sticky{
-    position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.92);
-    backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
-    transform:translateY(-110%);transition:transform .4s cubic-bezier(.2,.7,.2,1);
-  }
+  .sticky{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transform:translateY(-110%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
   .sticky.show{transform:translateY(0)}
   .sticky-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;gap:18px}
   .sticky-left{display:flex;align-items:center;gap:16px;min-width:0}
@@ -83,13 +68,10 @@
   .sticky-price b{color:var(--teal);font-weight:600}
   @media(max-width:620px){.sticky-title{display:none}}
 
-  /* Hero */
   .hero{position:relative;padding:150px 0 90px;background:
     radial-gradient(120% 90% at 12% -10%, #fbeede 0%, rgba(251,238,222,0) 46%),
     radial-gradient(120% 90% at 100% 0%, #e9f0ef 0%, rgba(233,240,239,0) 50%),
-    var(--white);
-    overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><circle cx='1' cy='1' r='.6' fill='%23000' opacity='.03'/></svg>");pointer-events:none}
+    var(--white);overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:54px;align-items:center;position:relative}
   .hero h1{font-size:clamp(40px,5.6vw,74px);margin-bottom:22px}
   .hero .sub{font-size:19px;max-width:440px;margin-bottom:32px}
@@ -100,23 +82,15 @@
   .rating{margin-top:26px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-soft)}
   .stars{color:#e0a83b;letter-spacing:2px;font-size:15px}
 
-  /* Art collage */
   .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(150px,1fr));gap:16px;height:480px}
   .art{border-radius:16px;position:relative;overflow:hidden;box-shadow:0 24px 50px -28px rgba(40,40,40,.5)}
   .art.tall{grid-row:span 2}
-  .art .frame{position:absolute;inset:0}
-  .art .grain{position:absolute;inset:0;mix-blend-mode:soft-light;opacity:.6}
   .float{animation:float 7s ease-in-out infinite}
   .float.d2{animation-delay:1.4s}
   .float.d3{animation-delay:.7s}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  @media(max-width:860px){
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .collage{height:380px}
-    .hero{padding:128px 0 70px}
-  }
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.collage{height:380px}.hero{padding:128px 0 70px}}
 
-  /* Section scaffolding */
   section{position:relative}
   .band{padding:96px 0}
   .center{text-align:center}
@@ -125,13 +99,11 @@
   .lead{font-size:18px;max-width:640px}
   .soft-bg{background:linear-gradient(180deg,#fbf7f1 0%, #f6f1ea 100%)}
 
-  /* Empathy */
   .empathy{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
   .empathy .qbox{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:0 30px 60px -40px rgba(40,40,40,.4)}
   .empathy .qbox p.big-q{font-family:'EB Garamond',serif;font-style:italic;font-size:26px;color:var(--ink);line-height:1.3}
   @media(max-width:860px){.empathy{grid-template-columns:1fr;gap:34px}}
 
-  /* Learn grid */
   .learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
   .lcard{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:30px 26px;transition:transform .3s,box-shadow .3s;text-align:left}
   .lcard:hover{transform:translateY(-5px);box-shadow:0 28px 50px -34px rgba(40,40,40,.45)}
@@ -141,7 +113,6 @@
   .lcard p{font-size:15px}
   @media(max-width:860px){.learn-grid{grid-template-columns:1fr}}
 
-  /* Curriculum timeline */
   .modules{margin-top:50px;display:grid;gap:0;border-top:1px solid var(--line)}
   .mod{display:grid;grid-template-columns:84px 1fr;gap:26px;padding:30px 6px;border-bottom:1px solid var(--line);align-items:start;transition:background .3s;text-align:left}
   .mod:hover{background:rgba(24,118,137,.035)}
@@ -149,7 +120,6 @@
   .mod h4{font-size:23px;margin-bottom:6px}
   .mod p{font-size:15.5px;max-width:680px}
 
-  /* Testimonials */
   .tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:46px}
   .tcard{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:32px;position:relative;text-align:left}
   .tcard .quote{font-family:'EB Garamond',serif;font-size:80px;color:rgba(24,118,137,.18);position:absolute;top:6px;left:22px;line-height:1}
@@ -159,12 +129,10 @@
   .tstars{color:#e0a83b;letter-spacing:2px;font-size:14px}
   @media(max-width:760px){.tgrid{grid-template-columns:1fr}}
 
-  /* Gallery */
   .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
   .gal{height:220px;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 22px 44px -30px rgba(40,40,40,.5)}
   @media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr)}.gal{height:180px}}
 
-  /* Artist */
   .artist{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
   .artist .portrait{height:440px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 30px 60px -34px rgba(40,40,40,.55)}
   .artist .badge{position:absolute;left:22px;bottom:22px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);padding:14px 18px;border-radius:12px}
@@ -174,7 +142,6 @@
   .artist p{font-size:16px;margin-bottom:16px}
   @media(max-width:860px){.artist{grid-template-columns:1fr;gap:34px}.artist .portrait{height:360px}}
 
-  /* Pricing */
   .price-wrap{display:flex;justify-content:center;margin-top:50px}
   .price-card{background:var(--white);border:1px solid var(--line);border-radius:24px;max-width:560px;width:100%;padding:46px 44px;box-shadow:0 40px 80px -44px rgba(40,40,40,.5);position:relative;overflow:hidden;text-align:left}
   .price-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--teal),#8cc4cd)}
@@ -198,7 +165,6 @@
   .bonus .brow p{font-size:13.5px}
   @media(max-width:560px){.price-card{padding:34px 24px}}
 
-  /* FAQ */
   .faq{max-width:780px;margin:46px auto 0}
   .faq-item{border-bottom:1px solid var(--line)}
   .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'EB Garamond',serif;font-size:21px;font-weight:600;color:var(--ink)}
@@ -207,7 +173,6 @@
   .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
   .faq-a p{padding:0 0 24px;font-size:15.5px;text-align:left}
 
-  /* CTA band */
   .cta-band{position:relative;padding:104px 0;text-align:center;overflow:hidden;color:#fff}
   .cta-band .frame{position:absolute;inset:0;z-index:0}
   .cta-band .wrap{position:relative;z-index:2}
@@ -215,7 +180,6 @@
   .cta-band p{color:rgba(255,255,255,.86);font-size:18px;margin-bottom:30px}
   .cta-band .btn{background:#fff;color:#000}
 
-  /* Footer */
   footer{background:#1c1c1c;color:#cfcabf;padding:64px 0 30px}
   .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
   .foot-grid .logo{color:#fff}
@@ -227,26 +191,16 @@
   .foot-links .h{color:#fff;font-weight:600;margin-bottom:14px;letter-spacing:.04em}
   .foot-bottom{border-top:1px solid #333;margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#8f8a80}
 
-  /* Reveal animation */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
 
-  /* Concept ribbon */
-  .concept{
-    position:fixed;right:14px;bottom:14px;z-index:80;
-    background:rgba(28,28,28,.92);color:#fff;backdrop-filter:blur(6px);
-    font-size:11.5px;font-weight:500;letter-spacing:.02em;
-    padding:9px 14px;border-radius:10px;max-width:280px;line-height:1.4;
-    box-shadow:0 14px 30px -16px rgba(0,0,0,.6);
-  }
+  .concept{position:fixed;right:14px;bottom:14px;z-index:80;background:rgba(28,28,28,.92);color:#fff;backdrop-filter:blur(6px);font-size:11.5px;font-weight:500;letter-spacing:.02em;padding:9px 14px;border-radius:10px;max-width:280px;line-height:1.4;box-shadow:0 14px 30px -16px rgba(0,0,0,.6)}
   .concept b{color:#fff}
   .concept .x{cursor:pointer;margin-left:8px;opacity:.6}
-  .concept a{color:#8cc4cd;text-decoration:underline}
 </style>
 </head>
 <body>
 
-<!-- Sticky enroll bar -->
 <div class="sticky" id="stickyBar">
   <div class="sticky-inner">
     <div class="sticky-left">
@@ -266,13 +220,10 @@
       <a href="#artist">The Artist</a>
       <a href="#pricing">Enroll</a>
     </div>
-    <div class="nav-cta">
-      <a class="login" href="#">Login</a>
-    </div>
+    <div class="nav-cta"><a class="login" href="#">Login</a></div>
   </nav>
 </header>
 
-<!-- Hero -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
@@ -285,20 +236,16 @@
         </button>
         <div class="instant"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12l4 4 10-10"/></svg></span> Instant Access · Online Course</div>
       </div>
-      <div class="rating">
-        <span class="stars">★★★★★</span>
-        <span>Loved by painters in 30+ countries</span>
-      </div>
+      <div class="rating"><span class="stars">★★★★★</span><span>Loved by painters in 30+ countries</span></div>
     </div>
     <div class="collage reveal">
-      <div class="art tall float" id="art1"><div class="frame"></div></div>
-      <div class="art float d2" id="art2"><div class="frame"></div></div>
-      <div class="art float d3" id="art3"><div class="frame"></div></div>
+      <div class="art tall float" id="art1"></div>
+      <div class="art float d2" id="art2"></div>
+      <div class="art float d3" id="art3"></div>
     </div>
   </div>
 </section>
 
-<!-- Trust strip -->
 <section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center;padding:22px 28px;font-size:14px;font-weight:500;color:var(--ink)">
     <span>★ 4+ hours of studio video</span>
@@ -308,7 +255,6 @@
   </div>
 </section>
 
-<!-- Empathy -->
 <section class="band soft-bg">
   <div class="wrap empathy">
     <div class="reveal">
@@ -324,7 +270,6 @@
   </div>
 </section>
 
-<!-- Learn grid -->
 <section class="band" id="learn">
   <div class="wrap center">
     <div class="reveal">
@@ -343,7 +288,6 @@
   </div>
 </section>
 
-<!-- Curriculum -->
 <section class="band soft-bg" id="curriculum">
   <div class="wrap">
     <div class="center reveal">
@@ -362,7 +306,6 @@
   </div>
 </section>
 
-<!-- Testimonials -->
 <section class="band">
   <div class="wrap center">
     <div class="reveal">
@@ -378,7 +321,6 @@
   </div>
 </section>
 
-<!-- Gallery -->
 <section class="band soft-bg">
   <div class="wrap center">
     <div class="reveal">
@@ -395,7 +337,6 @@
   </div>
 </section>
 
-<!-- Artist -->
 <section class="band" id="artist">
   <div class="wrap artist">
     <div class="portrait reveal" id="portrait">
@@ -411,7 +352,6 @@
   </div>
 </section>
 
-<!-- Pricing -->
 <section class="band soft-bg" id="pricing">
   <div class="wrap center">
     <div class="reveal">
@@ -443,7 +383,6 @@
   </div>
 </section>
 
-<!-- CTA band -->
 <section class="cta-band">
   <div class="frame" id="ctaArt"></div>
   <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,40,46,.62),rgba(15,40,46,.74))"></div>
@@ -454,7 +393,6 @@
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="band">
   <div class="wrap center reveal">
     <div class="eyebrow" style="margin-bottom:16px">Questions</div>
@@ -469,7 +407,6 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -500,7 +437,6 @@
   </div>
 </footer>
 
-<!-- Concept ribbon -->
 <div class="concept" id="concept">
   <b>Concept redesign</b> by BuildMyTribe · not affiliated with Arteway. A free sample for the Webflow role. <span class="x" onclick="document.getElementById('concept').style.display='none'">✕</span>
 </div>
@@ -529,7 +465,6 @@
     });
   });
 
-  // ---- Generative organic-abstract art (original, self-contained) ----
   function paint(el, palette){
     var w=el.clientWidth||400, h=el.clientHeight||400;
     var c=document.createElement('canvas');
@@ -540,11 +475,9 @@
     function rnd(a,b){return a+Math.random()*(b-a);}
     function pick(){return palette[Math.floor(Math.random()*palette.length)];}
     var light=palette[palette.length-2];
-    // base wash from two deeper palette tones
     var g=x.createLinearGradient(rnd(0,w),0,rnd(0,w),h);
     g.addColorStop(0,palette[0]); g.addColorStop(1,palette[4]||palette[1]);
     x.fillStyle=g; x.fillRect(0,0,w,h);
-    // soft layered colour pours
     for(var i=0;i<24;i++){
       var col=pick();
       var cx=rnd(-w*0.25,w*1.25), cy=rnd(-h*0.2,h*1.2), r=rnd(w*0.4,w*1.05);
@@ -552,7 +485,6 @@
       rg.addColorStop(0,col); rg.addColorStop(rnd(0.45,0.7),col); rg.addColorStop(1,'rgba(0,0,0,0)');
       x.globalAlpha=rnd(0.10,0.30); x.fillStyle=rg; x.fillRect(0,0,w,h);
     }
-    // gentle flowing light veins (soft, no harsh strokes)
     x.globalCompositeOperation='lighten';
     for(var s=0;s<5;s++){
       x.globalAlpha=rnd(0.05,0.13); x.fillStyle=light;
@@ -563,11 +495,9 @@
       x.lineTo(w+12,h+12); x.lineTo(-12,h+12); x.closePath(); x.fill();
     }
     x.globalCompositeOperation='source-over'; x.globalAlpha=1;
-    // soft depth vignette
     var vg=x.createRadialGradient(w/2,h*0.42,h*0.15,w/2,h*0.5,h*0.85);
     vg.addColorStop(0,'rgba(0,0,0,0)'); vg.addColorStop(1,'rgba(18,18,18,0.20)');
     x.fillStyle=vg; x.fillRect(0,0,w,h);
-    // fine paper grain
     try{
       var id=x.getImageData(0,0,w,h), d=id.data;
       for(var n=0;n<d.length;n+=4){var v=(Math.random()-0.5)*15; d[n]+=v; d[n+1]+=v; d[n+2]+=v;}
@@ -578,6 +508,22 @@
   var earth=['#8a6d4b','#c9a06a','#e6d3b3','#5f6b4e','#3a2e22'];
   var sage =['#5b7d6b','#9bb29c','#e3e7d8','#2f4538','#c2b59b'];
   var blush=['#b97f6a','#e3b9a6','#f0e3d8','#7a5246','#cfd6cf'];
-  function go(id,pal){var el=document.getElementById(id); if(el) paint(el,pal);}
+  function go(id,pal){var el=document.getElementById(id); if(el){ paint(el,pal); } }
   function build(){
-    go('ar
+    go('art1',ocean); go('art2',earth); go('art3',sage);
+    go('g1',ocean); go('g2',blush); go('g3',earth); go('g4',sage);
+    go('portrait',ocean); go('ctaArt',ocean);
+  }
+  build();
+  var rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      var cs=document.querySelectorAll('canvas');
+      for(var q=0;q<cs.length;q++){ cs[q].remove(); }
+      build();
+    },350);
+  });
+</script>
+</body>
+</html>
