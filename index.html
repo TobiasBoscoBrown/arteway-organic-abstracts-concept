@@ -85,10 +85,8 @@
   .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(150px,1fr));gap:16px;height:480px}
   .art{border-radius:16px;position:relative;overflow:hidden;box-shadow:0 24px 50px -28px rgba(40,40,40,.5)}
   .art.tall{grid-row:span 2}
-  .float{animation:float 7s ease-in-out infinite}
-  .float.d2{animation-delay:1.4s}
-  .float.d3{animation-delay:.7s}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  .float{transition:transform .5s ease}
+  .art:hover{transform:translateY(-4px)}
   @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.collage{height:380px}.hero{padding:128px 0 70px}}
 
   section{position:relative}
